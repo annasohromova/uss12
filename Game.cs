@@ -8,40 +8,42 @@ namespace uss1
 {
     class Game
     {
-    private Score scoreTracker; // Добавьте поле для объекта Score
+        private Score scoreTracker; // Добавьте поле для объекта Score
 
-    public Game()
+        public Game()
+        {
+            scoreTracker = new Score(); // Создайте экземпляр объекта Score
+        }
+
+        public void Start()
+        {
+            // Остальной код метода Start...
+
+            // Получение имени игрока
+            Console.Write("Sisestage oma nimi: ");
+            string name = Console.ReadLine();
+
+            // Получение результата игрока
+            Console.Write("Sisestage oma tulemus: ");
+            int score = Convert.ToInt32(Console.ReadLine());
+
+            // Добавление результата игрока
+            scoreTracker.AddScore(score);
+
+            // Сохранение результатов
+            scoreTracker.SaveScore();
+
+            Console.WriteLine("Mäng on lõppenud. Jätkamiseks vajutage mis tahes klahvi.");
+            Console.ReadKey();
+        }
+    }
+
+    class Program
     {
-        scoreTracker = new Score(); // Инициализируйте объект Score
+        static void Main(string[] args)
+        {
+            Game game = new Game();
+            game.Start();
+        }
     }
-
-    public void Start()
-    {
-        // Остальной код метода Start...
-
-        // Получение имени игрока
-        Console.Write("Sisestage oma nimi: ");
-        string name = Console.ReadLine();
-
-        // Получение результата игрока
-        Console.Write("Sisestage oma tulemus: ");
-        int score = Convert.ToInt32(Console.ReadLine());
-
-        // Добавление результата игрока
-        scoreTracker.AddScore(score);
-
-        // Сохранение результатов
-        scoreTracker.SaveScore();
-
-        Console.WriteLine("Mäng on lõppenud. Jätkamiseks vajutage mis tahes klahvi.");
-        Console.ReadKey();
-    }
-
-    // Остальной код класса Game...
-}
-
-        
-        
-    }
-
 }
